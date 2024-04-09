@@ -97,17 +97,28 @@
     
     <div class="e-content article-entry" itemprop="articleBody">
       
-        <h3 id="linux环境导出csv文件，如果用excel打开csv文件时会乱码，这里需要设置一种文件头部协议BOM"><a href="#linux环境导出csv文件，如果用excel打开csv文件时会乱码，这里需要设置一种文件头部协议BOM" class="headerlink" title="linux环境导出csv文件，如果用excel打开csv文件时会乱码，这里需要设置一种文件头部协议BOM"></a>linux环境导出csv文件，如果用excel打开csv文件时会乱码，这里需要设置一种文件头部协议<strong>BOM</strong></h3><h4 id="设置代码如下"><a href="#设置代码如下" class="headerlink" title="设置代码如下"></a>设置代码如下</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">FileOutputStream out=<span class="keyword">new</span> <span class="title class_">FileOutputStream</span>(file)</span><br><span class="line">OutputStreamWriter osw=<span class="keyword">new</span> <span class="title class_">OutputStreamWriter</span>(out,<span class="string">&quot;UTF-8&quot;</span>);</span><br><span class="line">osw.write(<span class="keyword">new</span> <span class="title class_">String</span>(<span class="keyword">new</span> <span class="title class_">byte</span>[] &#123; (<span class="type">byte</span>) <span class="number">0xEF</span>, (<span class="type">byte</span>) <span class="number">0xBB</span>,(<span class="type">byte</span>) <span class="number">0xBF</span> &#125;);</span><br></pre></td></tr></table></figure>
+        <h3 id="linux环境导出csv文件，如果用excel打开csv文件时会乱码，这里需要设置一种文件头部协议BOM"><a href="#linux环境导出csv文件，如果用excel打开csv文件时会乱码，这里需要设置一种文件头部协议BOM" class="headerlink" title="linux环境导出csv文件，如果用excel打开csv文件时会乱码，这里需要设置一种文件头部协议BOM"></a>linux环境导出csv文件，如果用excel打开csv文件时会乱码，这里需要设置一种文件头部协议<strong>BOM</strong></h3><h4 id="设置代码如下"><a href="#设置代码如下" class="headerlink" title="设置代码如下"></a>设置代码如下</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">FileOutputStream out=<span class="keyword">new</span> <span class="title class_">FileOutputStream</span>(file)</span><br><span class="line">OutputStreamWriter osw=<span class="keyword">new</span> <span class="title class_">OutputStreamWriter</span>(out,<span class="string">&quot;UTF-8&quot;</span>);</span><br><span class="line">osw.write(<span class="keyword">new</span> <span class="title class_">String</span>(<span class="keyword">new</span> <span class="title class_">byte</span>[] &#123; (<span class="type">byte</span>) <span class="number">0xEF</span>, (<span class="type">byte</span>) <span class="number">0xBB</span>,(<span class="type">byte</span>) <span class="number">0xBF</span> &#125;));</span><br></pre></td></tr></table></figure>
 
-<h4 id="一般来说这样已经没有问题了，但是导出的文件还是"><a href="#一般来说这样已经没有问题了，但是导出的文件还是" class="headerlink" title="一般来说这样已经没有问题了，但是导出的文件还是"></a>一般来说这样已经没有问题了，但是导出的文件还是</h4><p>![<a href="/image/img.png">图片1</a>]</p>
-
+<h4 id="一般来说这样已经没有问题了，但是导出的文件还是"><a href="#一般来说这样已经没有问题了，但是导出的文件还是" class="headerlink" title="一般来说这样已经没有问题了，但是导出的文件还是"></a>一般来说这样已经没有问题了，但是导出的文件还是</h4><p><img src="/image/img.png"></p>
+<h4 id="可以看到设置的字节变成了乱码的情况，这里用010Editor编辑器查看下文件的16进制编码"><a href="#可以看到设置的字节变成了乱码的情况，这里用010Editor编辑器查看下文件的16进制编码" class="headerlink" title="可以看到设置的字节变成了乱码的情况，这里用010Editor编辑器查看下文件的16进制编码"></a>可以看到设置的字节变成了乱码的情况，这里用<strong>010Editor</strong>编辑器查看下文件的16进制编码</h4><h5 id="下面第一张图是乱码的文件，第二张图是正常的"><a href="#下面第一张图是乱码的文件，第二张图是正常的" class="headerlink" title="下面第一张图是乱码的文件，第二张图是正常的"></a>下面第一张图是乱码的文件，第二张图是正常的</h5><p><img src="/image/img_1.png"><br><img src="/image/img_2.png"></p>
+<h4 id="文件头部本应是EF-BB-BF的字节变成了EF-BB-BF-EF-BB-BF-EF-BB-BF，刚好是三对"><a href="#文件头部本应是EF-BB-BF的字节变成了EF-BB-BF-EF-BB-BF-EF-BB-BF，刚好是三对" class="headerlink" title="文件头部本应是EF BB BF的字节变成了EF BB BF EF BB BF EF BB BF，刚好是三对"></a>文件头部本应是EF BB BF的字节变成了EF BB BF EF BB BF EF BB BF，刚好是三对</h4><h4 id="身为程序员遇到问题就问问万能的AI吧，下面是阿里的同义千问问答结果"><a href="#身为程序员遇到问题就问问万能的AI吧，下面是阿里的同义千问问答结果" class="headerlink" title="身为程序员遇到问题就问问万能的AI吧，下面是阿里的同义千问问答结果"></a>身为程序员遇到问题就问问万能的AI吧，下面是阿里的同义千问问答结果</h4><p><img src="/image/img_3.png"></p>
+<h4 id="注意图中圈住的地方，"><a href="#注意图中圈住的地方，" class="headerlink" title="注意图中圈住的地方，"></a>注意图中圈住的地方，</h4><blockquote>
+<p>EF BB BF是个替换字符，在识别到未知的字节序列时会被替换</p>
+</blockquote>
+<h4 id="也就是说我们写的EF-BB-BF没有被正确识别，问答结果中的原因是1-编码识别错误；2-编码转换错误；3-不支持BOM支持"><a href="#也就是说我们写的EF-BB-BF没有被正确识别，问答结果中的原因是1-编码识别错误；2-编码转换错误；3-不支持BOM支持" class="headerlink" title="也就是说我们写的EF BB BF没有被正确识别，问答结果中的原因是1.编码识别错误；2.编码转换错误；3.不支持BOM支持"></a>也就是说我们写的EF BB BF没有被正确识别，问答结果中的原因是1.编码识别错误；2.编码转换错误；3.不支持BOM支持</h4><h4 id="3首先可以排除，那么剩下两个都是编码问题"><a href="#3首先可以排除，那么剩下两个都是编码问题" class="headerlink" title="3首先可以排除，那么剩下两个都是编码问题"></a>3首先可以排除，那么剩下两个都是编码问题</h4><blockquote>
+<p>new String(new byte[] { (byte) 0xEF, (byte) 0xBB,(byte) 0xBF })</p>
+</blockquote>
+<h4 id="上面并没有指定编码格式，会不会是因为这个呢？先改下试试，改完后如下"><a href="#上面并没有指定编码格式，会不会是因为这个呢？先改下试试，改完后如下" class="headerlink" title="上面并没有指定编码格式，会不会是因为这个呢？先改下试试，改完后如下"></a>上面并没有指定编码格式，会不会是因为这个呢？先改下试试，改完后如下</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">FileOutputStream out=<span class="keyword">new</span> <span class="title class_">FileOutputStream</span>(file)</span><br><span class="line">OutputStreamWriter osw=<span class="keyword">new</span> <span class="title class_">OutputStreamWriter</span>(out,<span class="string">&quot;UTF-8&quot;</span>);</span><br><span class="line">osw.write(<span class="keyword">new</span> <span class="title class_">String</span>(<span class="keyword">new</span> <span class="title class_">byte</span>[] &#123; (<span class="type">byte</span>) <span class="number">0xEF</span>, (<span class="type">byte</span>) <span class="number">0xBB</span>,(<span class="type">byte</span>) <span class="number">0xBF</span> &#125;,StandardCharsets.UTF_8);</span><br></pre></td></tr></table></figure>
+<h4 id="后续测试导出结果就没有乱码情况了，乱码问题应该是创建String时未指定编码格式，Linux转码失败导致"><a href="#后续测试导出结果就没有乱码情况了，乱码问题应该是创建String时未指定编码格式，Linux转码失败导致" class="headerlink" title="后续测试导出结果就没有乱码情况了，乱码问题应该是创建String时未指定编码格式，Linux转码失败导致"></a>后续测试导出结果就没有乱码情况了，乱码问题应该是创建String时未指定编码格式，Linux转码失败导致</h4>
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2024/04/08/csv-coding/" data-id="cluqnuigt0000xk9fbrfobcnb" data-title="csv文件导出，EF BB BF变成EF BB BF" class="article-share-link"><span class="fa fa-share">分享</span></a>
+      <a data-url="http://example.com/2024/04/08/csv-coding/" data-id="clus2skbi0001b89fhq9m5z9t" data-title="csv文件导出，EF BB BF变成EF BB BF" class="article-share-link"><span class="fa fa-share">分享</span></a>
       
       
       
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/" rel="tag">java</a></li></ul>
+
     </footer>
   </div>
   
@@ -155,7 +166,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2024/04/07/hello-world/" data-id="cluqnuih10001xk9f1eua9uvm" data-title="Hello World" class="article-share-link"><span class="fa fa-share">分享</span></a>
+      <a data-url="http://example.com/2024/04/07/hello-world/" data-id="clus2skbd0000b89f70cier7i" data-title="Hello World" class="article-share-link"><span class="fa fa-share">分享</span></a>
       
       
       
@@ -177,9 +188,23 @@
 
   
     
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/java/" rel="tag">java</a></li></ul>
+    </div>
+  </div>
+
 
   
     
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/java/" style="font-size: 10px;">java</a>
+    </div>
+  </div>
+
   
     
   <div class="widget-wrap">

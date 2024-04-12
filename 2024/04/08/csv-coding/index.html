@@ -9,20 +9,20 @@
   <meta name="description" content="linux环境导出csv文件，如果用excel打开csv文件时会乱码，这里需要设置一种文件头部协议BOM设置代码如下123FileOutputStream out&#x3D;new FileOutputStream(file)OutputStreamWriter osw&#x3D;new OutputStreamWriter(out,&quot;UTF-8&quot;);osw.write(new String(ne">
 <meta property="og:type" content="article">
 <meta property="og:title" content="csv文件导出，EF BB BF变成EF BB BF">
-<meta property="og:url" content="http://example.com/2024/04/08/csv-coding/index.html">
+<meta property="og:url" content="https://fishfly3307.github.io/2024/04/08/csv-coding/index.html">
 <meta property="og:site_name" content="我的博客主页">
 <meta property="og:description" content="linux环境导出csv文件，如果用excel打开csv文件时会乱码，这里需要设置一种文件头部协议BOM设置代码如下123FileOutputStream out&#x3D;new FileOutputStream(file)OutputStreamWriter osw&#x3D;new OutputStreamWriter(out,&quot;UTF-8&quot;);osw.write(new String(ne">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://example.com/image/img.png">
-<meta property="og:image" content="http://example.com/image/img_1.png">
-<meta property="og:image" content="http://example.com/image/img_2.png">
-<meta property="og:image" content="http://example.com/image/img_3.png">
+<meta property="og:image" content="https://fishfly3307.github.io/csv-coding-image/img.png">
+<meta property="og:image" content="https://fishfly3307.github.io/csv-coding-image/img_1.png">
+<meta property="og:image" content="https://fishfly3307.github.io/csv-coding-image/img_2.png">
+<meta property="og:image" content="https://fishfly3307.github.io/csv-coding-image/img_3.png">
 <meta property="article:published_time" content="2024-04-08T07:18:30.000Z">
-<meta property="article:modified_time" content="2024-04-08T08:30:33.781Z">
+<meta property="article:modified_time" content="2024-04-09T09:40:01.733Z">
 <meta property="article:author" content="Fish Fly">
 <meta property="article:tag" content="java">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://example.com/image/img.png">
+<meta name="twitter:image" content="https://fishfly3307.github.io/csv-coding-image/img.png">
   
     <link rel="alternate" href="/atom.xml" title="我的博客主页" type="application/atom+xml">
   
@@ -53,7 +53,7 @@
       </h1>
       
         <h2 id="subtitle-wrap">
-          <a href="/" id="subtitle">HOME</a>
+          <a href="/" id="subtitle">主页</a>
         </h2>
       
     </div>
@@ -74,7 +74,7 @@
         <a class="nav-icon nav-search-btn" title="搜索"><span class="fa fa-search"></span></a>
       </nav>
       <div id="search-form-wrap">
-        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="搜索"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="搜索"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://fishfly3307.github.io"></form>
       </div>
     </div>
   </div>
@@ -105,9 +105,9 @@
       
         <h3 id="linux环境导出csv文件，如果用excel打开csv文件时会乱码，这里需要设置一种文件头部协议BOM"><a href="#linux环境导出csv文件，如果用excel打开csv文件时会乱码，这里需要设置一种文件头部协议BOM" class="headerlink" title="linux环境导出csv文件，如果用excel打开csv文件时会乱码，这里需要设置一种文件头部协议BOM"></a>linux环境导出csv文件，如果用excel打开csv文件时会乱码，这里需要设置一种文件头部协议<strong>BOM</strong></h3><h4 id="设置代码如下"><a href="#设置代码如下" class="headerlink" title="设置代码如下"></a>设置代码如下</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">FileOutputStream out=<span class="keyword">new</span> <span class="title class_">FileOutputStream</span>(file)</span><br><span class="line">OutputStreamWriter osw=<span class="keyword">new</span> <span class="title class_">OutputStreamWriter</span>(out,<span class="string">&quot;UTF-8&quot;</span>);</span><br><span class="line">osw.write(<span class="keyword">new</span> <span class="title class_">String</span>(<span class="keyword">new</span> <span class="title class_">byte</span>[] &#123; (<span class="type">byte</span>) <span class="number">0xEF</span>, (<span class="type">byte</span>) <span class="number">0xBB</span>,(<span class="type">byte</span>) <span class="number">0xBF</span> &#125;));</span><br></pre></td></tr></table></figure>
 
-<h4 id="一般来说这样已经没有问题了，但是导出的文件还是"><a href="#一般来说这样已经没有问题了，但是导出的文件还是" class="headerlink" title="一般来说这样已经没有问题了，但是导出的文件还是"></a>一般来说这样已经没有问题了，但是导出的文件还是</h4><p><img src="/image/img.png"></p>
-<h4 id="可以看到设置的字节变成了乱码的情况，这里用010Editor编辑器查看下文件的16进制编码"><a href="#可以看到设置的字节变成了乱码的情况，这里用010Editor编辑器查看下文件的16进制编码" class="headerlink" title="可以看到设置的字节变成了乱码的情况，这里用010Editor编辑器查看下文件的16进制编码"></a>可以看到设置的字节变成了乱码的情况，这里用<strong>010Editor</strong>编辑器查看下文件的16进制编码</h4><h5 id="下面第一张图是乱码的文件，第二张图是正常的"><a href="#下面第一张图是乱码的文件，第二张图是正常的" class="headerlink" title="下面第一张图是乱码的文件，第二张图是正常的"></a>下面第一张图是乱码的文件，第二张图是正常的</h5><p><img src="/image/img_1.png"><br><img src="/image/img_2.png"></p>
-<h4 id="文件头部本应是EF-BB-BF的字节变成了EF-BB-BF-EF-BB-BF-EF-BB-BF，刚好是三对"><a href="#文件头部本应是EF-BB-BF的字节变成了EF-BB-BF-EF-BB-BF-EF-BB-BF，刚好是三对" class="headerlink" title="文件头部本应是EF BB BF的字节变成了EF BB BF EF BB BF EF BB BF，刚好是三对"></a>文件头部本应是EF BB BF的字节变成了EF BB BF EF BB BF EF BB BF，刚好是三对</h4><h4 id="身为程序员遇到问题就问问万能的AI吧，下面是阿里的同义千问问答结果"><a href="#身为程序员遇到问题就问问万能的AI吧，下面是阿里的同义千问问答结果" class="headerlink" title="身为程序员遇到问题就问问万能的AI吧，下面是阿里的同义千问问答结果"></a>身为程序员遇到问题就问问万能的AI吧，下面是阿里的同义千问问答结果</h4><p><img src="/image/img_3.png"></p>
+<h4 id="一般来说这样已经没有问题了，但是导出的文件还是"><a href="#一般来说这样已经没有问题了，但是导出的文件还是" class="headerlink" title="一般来说这样已经没有问题了，但是导出的文件还是"></a>一般来说这样已经没有问题了，但是导出的文件还是</h4><p><img src="/csv-coding-image/img.png"></p>
+<h4 id="可以看到设置的字节变成了乱码的情况，这里用010Editor编辑器查看下文件的16进制编码"><a href="#可以看到设置的字节变成了乱码的情况，这里用010Editor编辑器查看下文件的16进制编码" class="headerlink" title="可以看到设置的字节变成了乱码的情况，这里用010Editor编辑器查看下文件的16进制编码"></a>可以看到设置的字节变成了乱码的情况，这里用<strong>010Editor</strong>编辑器查看下文件的16进制编码</h4><h5 id="下面第一张图是乱码的文件，第二张图是正常的"><a href="#下面第一张图是乱码的文件，第二张图是正常的" class="headerlink" title="下面第一张图是乱码的文件，第二张图是正常的"></a>下面第一张图是乱码的文件，第二张图是正常的</h5><p><img src="/csv-coding-image/img_1.png"><br><img src="/csv-coding-image/img_2.png"></p>
+<h4 id="文件头部本应是EF-BB-BF的字节变成了EF-BB-BF-EF-BB-BF-EF-BB-BF，刚好是三对"><a href="#文件头部本应是EF-BB-BF的字节变成了EF-BB-BF-EF-BB-BF-EF-BB-BF，刚好是三对" class="headerlink" title="文件头部本应是EF BB BF的字节变成了EF BB BF EF BB BF EF BB BF，刚好是三对"></a>文件头部本应是EF BB BF的字节变成了EF BB BF EF BB BF EF BB BF，刚好是三对</h4><h4 id="身为程序员遇到问题就问问万能的AI吧，下面是阿里的同义千问问答结果"><a href="#身为程序员遇到问题就问问万能的AI吧，下面是阿里的同义千问问答结果" class="headerlink" title="身为程序员遇到问题就问问万能的AI吧，下面是阿里的同义千问问答结果"></a>身为程序员遇到问题就问问万能的AI吧，下面是阿里的同义千问问答结果</h4><p><img src="/csv-coding-image/img_3.png"></p>
 <h4 id="注意图中圈住的地方，"><a href="#注意图中圈住的地方，" class="headerlink" title="注意图中圈住的地方，"></a>注意图中圈住的地方，</h4><blockquote>
 <p>EF BB BF是个替换字符，在识别到未知的字节序列时会被替换</p>
 </blockquote>
@@ -119,7 +119,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2024/04/08/csv-coding/" data-id="clus30nkh0000w89f7r38due8" data-title="csv文件导出，EF BB BF变成EF BB BF" class="article-share-link"><span class="fa fa-share">分享</span></a>
+      <a data-url="https://fishfly3307.github.io/2024/04/08/csv-coding/" data-id="cluwbzsvm00033c9fhhxp67d8" data-title="csv文件导出，EF BB BF变成EF BB BF" class="article-share-link"><span class="fa fa-share">分享</span></a>
       
       
       
@@ -129,6 +129,20 @@
   </div>
   
     
+<nav id="article-nav">
+  
+    <a href="/2024/04/09/sh-log-split-md/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">前一篇</strong>
+      <div class="article-nav-title">
+        
+          tomcat通过服务器定时任务按每天切割日志文件
+        
+      </div>
+    </a>
+  
+  
+</nav>
+
   
 </article>
 
@@ -144,7 +158,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">标签</h3>
     <div class="widget">
-      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/java/" rel="tag">java</a></li></ul>
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/java/" rel="tag">java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sh%E8%84%9A%E6%9C%AC/" rel="tag">sh脚本</a></li></ul>
     </div>
   </div>
 
@@ -154,7 +168,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">标签云</h3>
     <div class="widget tagcloud">
-      <a href="/tags/java/" style="font-size: 10px;">java</a>
+      <a href="/tags/java/" style="font-size: 10px;">java</a> <a href="/tags/sh%E8%84%9A%E6%9C%AC/" style="font-size: 10px;">sh脚本</a>
     </div>
   </div>
 
@@ -174,6 +188,10 @@
     <h3 class="widget-title">最新文章</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2024/04/09/sh-log-split-md/">tomcat通过服务器定时任务按每天切割日志文件</a>
+          </li>
         
           <li>
             <a href="/2024/04/08/csv-coding/">csv文件导出，EF BB BF变成EF BB BF</a>
